@@ -11,7 +11,7 @@ from langchain_core.output_parsers import StrOutputParser
 #from dotenv import load_dotenv
 LANGSMITH_TRACING="true"
 LANGSMITH_ENDPOINT="https://api.smith.langchain.com"
-LANGSMITH_API_KEY=st.secrets["LANGCHAIN_API_KEY"]
+LANGSMITH_API_KEY=st.secrets["LangSmith_API"]
 LANGSMITH_PROJECT="test"
 #OPENAI_API_KEY="<your-openai-api-key>"
 
