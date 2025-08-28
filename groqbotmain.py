@@ -9,9 +9,19 @@ from langchain_core.output_parsers import StrOutputParser
 #import streamlit as st
 #import os
 #from dotenv import load_dotenv
-LANGCHAIN_TRACING_V2="true"
-LANGCHAIN_API_KEY=st.secrets["LANGCHAIN_API_KEY"]
+LANGSMITH_TRACING="true"
+LANGSMITH_ENDPOINT="https://api.smith.langchain.com"
+LANGSMITH_API_KEY=st.secrets["LANGCHAIN_API_KEY"]
+LANGSMITH_PROJECT="test"
+#OPENAI_API_KEY="<your-openai-api-key>"
 
+#LANGCHAIN_TRACING_V2="true"
+#LANGCHAIN_API_KEY=st.secrets["LANGCHAIN_API_KEY"]
+from langchain_groq import ChatGroq
+
+llm = ChatGroq()
+llm.invoke("Hello, world!")
+'''
 prompt=ChatPromptTemplate.from_messages(
     [
         ("system","You are a helpful assistant. Please response to the user queries"),
@@ -44,3 +54,4 @@ chain=prompt|llm|output_parser
 outvar=chat_completion.choices[0].message.content
 st.write(outvar)
 #print(outvar)
+'''
