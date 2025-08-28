@@ -9,11 +9,11 @@ from langchain_core.output_parsers import StrOutputParser
 #import streamlit as st
 #import os
 #from dotenv import load_dotenv
-LANGSMITH_TRACING="true"
-LANGSMITH_TRACING_V2="true"
+os.environ["LANGSMITH_TRACING"]="true"
+os.environ["LANGSMITH_TRACING_V2"]="true"
 #LANGSMITH_ENDPOINT="https://api.smith.langchain.com"
 LANGSMITH_API_KEY=st.secrets["LangSmith_API"]
-LANGSMITH_PROJECT="test"
+os.environ["LANGSMITH_PROJECT"]="test"
 #OPENAI_API_KEY="<your-openai-api-key>"
 
 #LANGCHAIN_TRACING_V2="true"
