@@ -54,7 +54,7 @@ chat_completion = client.chat.completions.create(
     model="llama-3.3-70b-versatile",
 )
 output_parser=StrOutputParser()
-chain=prompt|client|output_parser
+chain=prompt|llm|output_parser
 outvar=chat_completion.choices[0].message.content
 st.write(outvar)
 #print(outvar)
