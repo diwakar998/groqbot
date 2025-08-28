@@ -1,2 +1,10 @@
 groq
 streamlit
+pandas
+openpyxl
+langchain_core
+python-dotenv
+langchain_community
+langserve
+langchain
+langchain-groq
