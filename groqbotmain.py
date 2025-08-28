@@ -38,7 +38,9 @@ client = Groq(
     api_key=st.secrets["GROQ_API_KEY"],
 )
 # Set the app title
-st.title("🤖🤖 PMO Groq Reporting & Governance Agent, Your PMO Expert")
+st.set_page_config(page_title="PMO Agent", page_icon="🤖")
+st.title("🤖 PMO Agent Chatbot – Ask your question + upload files")
+#st.title("🤖🤖 PMO Groq Reporting & Governance Agent, Your PMO Expert")
 # User input
 #user_input = st.chat_input("How can I help you today...")
 input_text=st.text_input("Search the topic u want")
