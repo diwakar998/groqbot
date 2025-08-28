@@ -40,6 +40,21 @@ client = Groq(
 # Set the app title
 st.set_page_config(page_title="PMO Agent", page_icon="🤖")
 st.title("🤖 PMO Agent Chatbot – Ask your question + upload files")
+
+# Add some colored headers
+st.markdown("### 🟢 Enter your *legal* query below:")
+st.text_area("💬 Your Question:", height=100)
+
+# Put input + file in columns
+col1, col2 = st.columns([2,1])
+with col1:
+    st.text_input("✍️ Query Header")
+with col2:
+    st.color_picker("🎨 Pick a highlight color")
+
+uploaded_file = st.file_uploader("📎 Upload Supporting Docs", type=["pdf","docx","txt"])
+
+
 #st.title("🤖🤖 PMO Groq Reporting & Governance Agent, Your PMO Expert")
 # User input
 #user_input = st.chat_input("How can I help you today...")
