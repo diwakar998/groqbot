@@ -2,6 +2,24 @@ import os
 from groq import Groq
 import streamlit as st
 
+from langchain_groq 
+#import  ChatOpenAI
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+from langchain_community.llms import groq
+#import streamlit as st
+#import os
+#from dotenv import load_dotenv
+LANGCHAIN_TRACING_V2="true"
+LANGCHAIN_API_KEY=st.secrets["LANGCHAIN_API_KEY"]
+
+prompt=ChatPromptTemplate.from_messages(
+    [
+        ("system","You are a helpful assistant. Please response to the user queries"),
+        ("user","Question:{question}")
+    ]
+)
+
 client = Groq(
     api_key=st.secrets["GROQ_API_KEY"],
 )
@@ -22,6 +40,8 @@ chat_completion = client.chat.completions.create(
     ],
     model="llama-3.3-70b-versatile",
 )
+output_parser=StrOutputParser()
+chain=prompt|llm|output_parser
 outvar=chat_completion.choices[0].message.content
 st.write(outvar)
-print(outvar)
+#print(outvar)
