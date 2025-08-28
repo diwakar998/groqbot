@@ -42,6 +42,10 @@ st.title("🤖🤖 PMO Groq Reporting & Governance Agent, Your PMO Expert")
 # User input
 #user_input = st.chat_input("How can I help you today...")
 input_text=st.text_input("Search the topic u want")
+uploaded_file = st.file_uploader(
+    "Attach a supporting file (optional)", 
+    type=["txt", "pdf", "docx", "csv"]
+)
 #prompt=chatprompttemplate.
 
 #chat_completion = client.chat.completions.create(
