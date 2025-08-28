@@ -9,6 +9,7 @@ client = Groq(
 st.title("🤖🤖 PMO Groq Reporting & Governance Agent, Your PMO Expert")
 # User input
 user_input = st.chat_input("How can I help you today...")
+input_text=st.text_input("Search the topic u want")
 #prompt=chatprompttemplate.
 
 chat_completion = client.chat.completions.create(
@@ -16,7 +17,7 @@ chat_completion = client.chat.completions.create(
         {
             "role": "user",
             #"content": "Explain the importance of fast language models",
-            "content": user_input,
+            "content": input_text,
         }
     ],
     model="llama-3.3-70b-versatile",
