@@ -8,7 +8,7 @@ client = Groq(
 # Set the app title
 st.title("🤖🤖 PMO Groq Reporting & Governance Agent, Your PMO Expert")
 # User input
-user_input = st.chat_input("How can I help you today...")
+#user_input = st.chat_input("How can I help you today...")
 input_text=st.text_input("Search the topic u want")
 #prompt=chatprompttemplate.
 
