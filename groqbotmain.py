@@ -25,7 +25,7 @@ llm = ChatGroq(
     groq_api_key=st.secrets["GROQ_API_KEY"],
     model="llama-3.3-70b-versatile"   # or "llama3-70b-8192", etc.
 )
-llm.invoke("Hello, world!")
+#llm.invoke("Hello, world!")
 
 prompt=ChatPromptTemplate.from_messages(
     [
@@ -43,7 +43,7 @@ st.title("🤖🤖 PMO Groq Reporting & Governance Agent, Your PMO Expert")
 #user_input = st.chat_input("How can I help you today...")
 input_text=st.text_input("Search the topic u want")
 #prompt=chatprompttemplate.
-
+'''
 chat_completion = client.chat.completions.create(
     messages=[
         {
@@ -54,9 +54,14 @@ chat_completion = client.chat.completions.create(
     ],
     model="llama-3.3-70b-versatile",
 )
+'''
 output_parser=StrOutputParser()
 chain=prompt|llm|output_parser
-outvar=chat_completion.choices[0].message.content
-st.write(outvar)
+#chain=prompt|llm|output_parser
+
+if input_text:
+    st.write(chain.invoke({"question":input_text}))
+#outvar=chat_completion.choices[0].message.content
+#st.write(outvar)
 #print(outvar)
 
