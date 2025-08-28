@@ -10,7 +10,8 @@ from langchain_core.output_parsers import StrOutputParser
 #import os
 #from dotenv import load_dotenv
 LANGSMITH_TRACING="true"
-LANGSMITH_ENDPOINT="https://api.smith.langchain.com"
+LANGSMITH_TRACING_V2="true"
+#LANGSMITH_ENDPOINT="https://api.smith.langchain.com"
 LANGSMITH_API_KEY=st.secrets["LangSmith_API"]
 LANGSMITH_PROJECT="test"
 #OPENAI_API_KEY="<your-openai-api-key>"
@@ -24,7 +25,7 @@ llm = ChatGroq(
     groq_api_key=st.secrets["GROQ_API_KEY"],
     model="llama-3.3-70b-versatile"   # or "llama3-70b-8192", etc.
 )
-#llm.invoke("Hello, world!")
+llm.invoke("Hello, world!")
 
 prompt=ChatPromptTemplate.from_messages(
     [
