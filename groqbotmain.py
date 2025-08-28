@@ -12,7 +12,7 @@ from langchain_core.output_parsers import StrOutputParser
 os.environ["LANGSMITH_TRACING"]="true"
 os.environ["LANGSMITH_TRACING_V2"]="true"
 #LANGSMITH_ENDPOINT="https://api.smith.langchain.com"
-LANGSMITH_API_KEY=st.secrets["LangSmith_API"]
+os.environ["LANGSMITH_API_KEY"]=st.secrets["LangSmith_API"]
 os.environ["LANGSMITH_PROJECT"]="test"
 #OPENAI_API_KEY="<your-openai-api-key>"
 
