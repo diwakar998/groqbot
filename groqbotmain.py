@@ -43,18 +43,18 @@ st.title("🤖🤖 PMO Groq Reporting & Governance Agent, Your PMO Expert")
 #user_input = st.chat_input("How can I help you today...")
 input_text=st.text_input("Search the topic u want")
 #prompt=chatprompttemplate.
-'''
-chat_completion = client.chat.completions.create(
-    messages=[
-        {
-            "role": "user",
+
+#chat_completion = client.chat.completions.create(
+#    messages=[
+#        {
+ #           "role": "user",
             #"content": "Explain the importance of fast language models",
-            "content": input_text,
-        }
-    ],
-    model="llama-3.3-70b-versatile",
-)
-'''
+  #          "content": input_text,
+   #     }
+  #  ],
+  #  model="llama-3.3-70b-versatile",
+#)
+
 output_parser=StrOutputParser()
 chain=prompt|llm|output_parser
 #chain=prompt|llm|output_parser
