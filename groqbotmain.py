@@ -1,23 +1,19 @@
 import os
 from groq import Groq
 import streamlit as st
+import pandas as pd
+import openpyxl
 
 from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-#from langchain_community.llms import groq
-#import streamlit as st
-#import os
-#from dotenv import load_dotenv
+
 os.environ["LANGSMITH_TRACING"]="true"
 os.environ["LANGSMITH_TRACING_V2"]="true"
 #LANGSMITH_ENDPOINT="https://api.smith.langchain.com"
 os.environ["LANGSMITH_API_KEY"]=st.secrets["LangSmith_API"]
 os.environ["LANGSMITH_PROJECT"]="test"
 #OPENAI_API_KEY="<your-openai-api-key>"
-
-#LANGCHAIN_TRACING_V2="true"
-#LANGCHAIN_API_KEY=st.secrets["LANGCHAIN_API_KEY"]
 from langchain_groq import ChatGroq
 
 #llm = ChatGroq()
@@ -34,9 +30,7 @@ prompt=ChatPromptTemplate.from_messages(
     ]
 )
 
-client = Groq(
-    api_key=st.secrets["GROQ_API_KEY"],
-)
+client = Groq(api_key=st.secrets["GROQ_API_KEY"],)
 # Set the app title
 st.set_page_config(page_title="PMO Agent", page_icon="🤖")
 st.title("🤖 PMO Agent Chatbot – Ask your question + upload files")
@@ -45,7 +39,7 @@ st.title("🤖 PMO Agent Chatbot – Ask your question + upload files")
 st.markdown("### 🟢 Enter your *PMO* query below:")
 #st.text_area("💬 Your Question:", height=100)
 
-uploaded_file = st.file_uploader("📎 Upload Supporting Docs", type=["pdf","docx","txt"])
+#uploaded_file = st.file_uploader("📎 Upload Supporting Docs", type=["pdf","docx","txt"])
 
 #st.title("🤖🤖 PMO Groq Reporting & Governance Agent, Your PMO Expert")
 # User input
@@ -53,10 +47,13 @@ uploaded_file = st.file_uploader("📎 Upload Supporting Docs", type=["pdf","doc
 input_text=st.text_input("Search the topic u want")
 uploaded_file = st.file_uploader(
     "Attach a supporting file (optional)", 
-    type=["txt", "pdf", "docx", "csv"]
+    type=["txt", "pdf", "docx", "csv","xlsx"]
 )
+df = pd.read_excel(uploaded_file)
+# Convert to string (you can filter/clean before sending)
+text_data = df.to_string()
 #prompt=chatprompttemplate.
-
+st.write(text_data)
 #chat_completion = client.chat.completions.create(
 #    messages=[
 #        {
