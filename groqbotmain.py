@@ -66,7 +66,7 @@ if uploaded_file is not None:
     df = pd.read_excel(uploaded_file)
     # Convert to string (you can filter/clean before sending)
     text_data = df.to_string()
-else
+else:
     text_data=""
     #prompt=chatprompttemplate.
     #st.write(text_data)
