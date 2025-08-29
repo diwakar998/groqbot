@@ -66,8 +66,10 @@ if uploaded_file is not None:
     df = pd.read_excel(uploaded_file)
     # Convert to string (you can filter/clean before sending)
     text_data = df.to_string()
+else
+    text_data=""
     #prompt=chatprompttemplate.
-    st.write(text_data)
+    #st.write(text_data)
 #chat_completion = client.chat.completions.create(
 #    messages=[
 #        {
@@ -84,7 +86,7 @@ chain=prompt|llm|output_parser
 #chain=prompt|llm|output_parser
 
 if input_text:
-    st.write(chain.invoke({"question":input_text}))
+    st.write(chain.invoke({"question":input_text+text_data}))
 #outvar=chat_completion.choices[0].message.content
 #st.write(outvar)
 #print(outvar)
