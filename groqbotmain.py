@@ -49,6 +49,19 @@ uploaded_file = st.file_uploader(
     "Attach a supporting file (optional)", 
     type=["txt", "pdf", "docx", "csv","xlsx"]
 )
+# Submit button to control execution
+if st.button("Submit"):
+    if not input_text:  # Text is mandatory
+        st.error("⚠️ Please enter text before submitting.")
+    else:
+        st.success("✅ Processing your request...")
+        #st.write("Text entered:", text_val)
+        
+        if uploaded_file:
+            st.write("File uploaded:", uploaded_file.name)
+        else:
+            st.info("No file uploaded (that’s okay!)")
+            
 if uploaded_file is not None:
     df = pd.read_excel(uploaded_file)
     # Convert to string (you can filter/clean before sending)
