@@ -31,8 +31,8 @@ if "messages" not in st.session_state:
     ]
 
 # Display all previous messages
-for msg in st.session_state.messages[1:]:  # Skip system prompt in UI
-    with st.chat_message(msg["role"]):
+#for msg in st.session_state.messages[1:]:  # Skip system prompt in UI
+#    with st.chat_message(msg["role"]):
         #st.markdown(msg["content"])
 
 # Create prompt template from the stored messages
@@ -90,8 +90,8 @@ else:
 if user_input:
     # Add user's message to history and show
     st.session_state.messages.append({"role": "user", "content": user_input+text_data})
-    with st.chat_message("user"):
-        st.markdown(user_input)
+    with st.chat_message("user")
+        #st.markdown(user_input)
         
 output_parser=StrOutputParser()
 chain=prompt|llm|output_parser
