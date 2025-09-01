@@ -54,8 +54,6 @@ llm = ChatGroq(
     model="llama-3.3-70b-versatile"   # or "llama3-70b-8192", etc.
 )
 
-
-
 #client = Groq(api_key=st.secrets["GROQ_API_KEY"],)
 # Set the app title
 st.set_page_config(page_title="AI PMO Agent", page_icon="🤖")
@@ -73,7 +71,7 @@ uploaded_file = st.file_uploader(
 )
 # Submit button to control execution
 if st.button("Submit"):
-    if not input_text:  # Text is mandatory
+    if not user_input:  # Text is mandatory
         st.error("⚠️ Please enter text before submitting.")
     else:
         st.success("✅ Processing your request...")
