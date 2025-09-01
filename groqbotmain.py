@@ -31,9 +31,9 @@ if "messages" not in st.session_state:
     ]
 
 # Display all previous messages
-#for msg in st.session_state.messages[1:]:  # Skip system prompt in UI
-#    with st.chat_message(msg["role"]):
-        #st.markdown(msg["content"])
+for msg in st.session_state.messages[1:]:  # Skip system prompt in UI
+    with st.chat_message(msg["role"]):
+        st.markdown(msg["content"])
 
 # Create prompt template from the stored messages
 prompt = ChatPromptTemplate.from_messages([
@@ -62,12 +62,16 @@ st.title("🤖 PMO AI Agent")
 #st.markdown("### 🟢 Hi, How can I help you today !!")
 #st.text_area("💬 Your Question:", height=100)
 
-user_input=st.text_input("Hi, How can I help you today ?")
-
-uploaded_file = st.file_uploader(
+with st.form("chat_form", clear_on_submit=True):
+    user_input = st.text_input("Hi, How can I help you today ?", key="input_box")
+    uploaded_file = st.file_uploader(
     "Attach a supporting file (optional)", 
     type=["txt", "pdf", "docx", "csv","xlsx"]
-)
+    )
+    submitted = st.form_submit_button("Submit")
+    
+#user_input=st.text_input("Hi, How can I help you today ?")
+
 # Submit button to control execution
 if st.button("Submit"):
     if not user_input:  # Text is mandatory
