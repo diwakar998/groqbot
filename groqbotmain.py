@@ -73,7 +73,7 @@ with st.form("chat_form", clear_on_submit=True):
 #user_input=st.text_input("Hi, How can I help you today ?")
 
 # Submit button to control execution
-if st.button("Submit"):
+if submitted:
     if not user_input:  # Text is mandatory
         st.error("⚠️ Please enter text before submitting.")
     else:
