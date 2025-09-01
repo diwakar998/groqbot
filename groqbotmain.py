@@ -78,7 +78,8 @@ st.title("🤖 PMO AI Agent")
 with st.sidebar:
     st.header("💬 Chat with Bot")
     with st.form("chat_form", clear_on_submit=True):
-        user_input = st.text_input("Hi, How can I help you today ?", key="input_box")
+        #user_input = st.text_input("Hi, How can I help you today ?", key="input_box")
+        user_input=st.text_area("Hi, How can I help you today ?", height=50)
         uploaded_file = st.file_uploader(
         "Attach a supporting file (optional)", 
         type=["txt", "pdf", "docx", "csv","xlsx"]
