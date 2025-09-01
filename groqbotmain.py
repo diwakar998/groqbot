@@ -10,18 +10,14 @@ from langchain_core.output_parsers import StrOutputParser
 
 os.environ["LANGSMITH_TRACING"]="true"
 os.environ["LANGSMITH_TRACING_V2"]="true"
-#LANGSMITH_ENDPOINT="https://api.smith.langchain.com"
 os.environ["LANGSMITH_API_KEY"]=st.secrets["LangSmith_API"]
 os.environ["LANGSMITH_PROJECT"]="test"
-#OPENAI_API_KEY="<your-openai-api-key>"
 from langchain_groq import ChatGroq
 
-#llm = ChatGroq()
 llm = ChatGroq(
     groq_api_key=st.secrets["GROQ_API_KEY"],
     model="llama-3.3-70b-versatile"   # or "llama3-70b-8192", etc.
 )
-#llm.invoke("Hello, world!")
 
 prompt=ChatPromptTemplate.from_messages(
     [
@@ -39,11 +35,6 @@ st.title("🤖 PMO Agent Chatbot – Ask your question + upload files")
 st.markdown("### 🟢 Enter your *PMO* query below:")
 #st.text_area("💬 Your Question:", height=100)
 
-#uploaded_file = st.file_uploader("📎 Upload Supporting Docs", type=["pdf","docx","txt"])
-
-#st.title("🤖🤖 PMO Groq Reporting & Governance Agent, Your PMO Expert")
-# User input
-#user_input = st.chat_input("How can I help you today...")
 input_text=st.text_input("Search the topic u want")
 uploaded_file = st.file_uploader(
     "Attach a supporting file (optional)", 
@@ -55,8 +46,7 @@ if st.button("Submit"):
         st.error("⚠️ Please enter text before submitting.")
     else:
         st.success("✅ Processing your request...")
-        #st.write("Text entered:", text_val)
-        
+        #st.write("Text entered:", text_val)    
         if uploaded_file:
             st.write("File uploaded:", uploaded_file.name)
         else:
@@ -68,26 +58,10 @@ if uploaded_file is not None:
     text_data = df.to_string()
 else:
     text_data=""
-    #prompt=chatprompttemplate.
-    #st.write(text_data)
-#chat_completion = client.chat.completions.create(
-#    messages=[
-#        {
- #           "role": "user",
-            #"content": "Explain the importance of fast language models",
-  #          "content": input_text,
-   #     }
-  #  ],
-  #  model="llama-3.3-70b-versatile",
-#)
 
 output_parser=StrOutputParser()
 chain=prompt|llm|output_parser
-#chain=prompt|llm|output_parser
 
 if input_text:
     st.write(chain.invoke({"question":input_text+text_data}))
-#outvar=chat_completion.choices[0].message.content
-#st.write(outvar)
-#print(outvar)
 
