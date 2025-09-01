@@ -90,7 +90,7 @@ else:
 if user_input:
     # Add user's message to history and show
     st.session_state.messages.append({"role": "user", "content": user_input+text_data})
-    with st.chat_message("user")
+    #with st.chat_message("user")
         #st.markdown(user_input)
         
 output_parser=StrOutputParser()
