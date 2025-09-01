@@ -62,7 +62,9 @@ prompt = ChatPromptTemplate.from_messages([
 
 llm = ChatGroq(
     groq_api_key=st.secrets["GROQ_API_KEY"],
-    model="llama-3.3-70b-versatile"   # or "llama3-70b-8192", etc.
+    model="llama-3.3-70b-versatile",   # or "llama3-70b-8192", etc.
+    temperature=0.1,  # default is 0.7, change to e.g., 0.5 for more focused output
+    top_p=0.9          
 )
 
 #client = Groq(api_key=st.secrets["GROQ_API_KEY"],)
