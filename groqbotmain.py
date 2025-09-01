@@ -97,6 +97,6 @@ if user_input:
 output_parser=StrOutputParser()
 chain=prompt|llm|output_parser
 if user_input:
-    response=chain.invoke({"question":user_input})
+    response=chain.invoke({"user_input":user_input})
     st.markdown(response)
 
