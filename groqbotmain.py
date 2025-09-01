@@ -62,40 +62,43 @@ st.title("🤖 PMO AI Agent")
 #st.markdown("### 🟢 Hi, How can I help you today !!")
 #st.text_area("💬 Your Question:", height=100)
 
-with st.form("chat_form", clear_on_submit=True):
-    user_input = st.text_input("Hi, How can I help you today ?", key="input_box")
-    uploaded_file = st.file_uploader(
-    "Attach a supporting file (optional)", 
-    type=["txt", "pdf", "docx", "csv","xlsx"]
-    )
-    submitted = st.form_submit_button("Submit")
+# ---- Sidebar = Chat input area ----
+with st.sidebar:
+    st.header("💬 Chat with Bot")
+    with st.form("chat_form", clear_on_submit=True):
+        user_input = st.text_input("Hi, How can I help you today ?", key="input_box")
+        uploaded_file = st.file_uploader(
+        "Attach a supporting file (optional)", 
+        type=["txt", "pdf", "docx", "csv","xlsx"]
+        )
+        submitted = st.form_submit_button("Submit")
     
-#user_input=st.text_input("Hi, How can I help you today ?")
-
-# Submit button to control execution
-if submitted:
-    if not user_input:  # Text is mandatory
-        st.error("⚠️ Please enter text before submitting.")
-    else:
-        st.success("✅ Processing your request...")
-        #st.write("Text entered:", text_val)    
-        if uploaded_file:
-            st.write("File uploaded:", uploaded_file.name)
+    #user_input=st.text_input("Hi, How can I help you today ?")
+    
+    # Submit button to control execution
+    if submitted:
+        if not user_input:  # Text is mandatory
+            st.error("⚠️ Please enter text before submitting.")
         else:
-            st.info("No file uploaded (that’s okay!)")
-            
-if uploaded_file is not None:
-    df = pd.read_excel(uploaded_file)
-    # Convert to string (you can filter/clean before sending)
-    text_data = df.to_string()
-else:
-    text_data=""
-# Process user input
-if user_input:
-    # Add user's message to history and show
-    st.session_state.messages.append({"role": "user", "content": user_input+text_data})
-    #with st.chat_message("user")
-        #st.markdown(user_input)
+            st.success("✅ Processing your request...")
+            #st.write("Text entered:", text_val)    
+            if uploaded_file:
+                st.write("File uploaded:", uploaded_file.name)
+            else:
+                st.info("No file uploaded (that’s okay!)")
+                
+    if uploaded_file is not None:
+        df = pd.read_excel(uploaded_file)
+        # Convert to string (you can filter/clean before sending)
+        text_data = df.to_string()
+    else:
+        text_data=""
+    # Process user input
+    if user_input:
+        # Add user's message to history and show
+        st.session_state.messages.append({"role": "user", "content": user_input+text_data})
+        #with st.chat_message("user")
+            #st.markdown(user_input)
         
 output_parser=StrOutputParser()
 chain=prompt|llm|output_parser
