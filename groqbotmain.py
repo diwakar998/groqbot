@@ -14,6 +14,18 @@ os.environ["LANGSMITH_API_KEY"]=st.secrets["LangSmith_API"]
 os.environ["LANGSMITH_PROJECT"]="test"
 from langchain_groq import ChatGroq
 
+st.markdown(
+    """
+    <style>
+    /* Target the small helper text under text_input */
+    .stTextInput > div > div > div > div:nth-child(2) {
+        display: none;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # Initialize chat history with a health-focused system prompt
 if "messages" not in st.session_state:
     st.session_state.messages = [
