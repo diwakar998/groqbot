@@ -134,7 +134,7 @@ if uploaded_file is not None:
         # Read as text
         stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
         content = stringio.read()
-
+        text_data=content
     elif file_type == "pdf":
         # Extract text from PDF
         reader = PdfReader(uploaded_file)
