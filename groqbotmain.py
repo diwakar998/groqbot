@@ -125,7 +125,7 @@ with st.sidebar:
             else:
                 st.info("No file uploaded (that’s okay!)")
                 
-    
+text_data=""    
 if uploaded_file is not None:
     file_type = uploaded_file.name.split(".")[-1].lower()
     content = None
