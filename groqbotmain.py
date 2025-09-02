@@ -126,9 +126,69 @@ with st.sidebar:
                 st.info("No file uploaded (that’s okay!)")
                 
     if uploaded_file is not None:
+
+import streamlit as st
+import pandas as pd
+from io import StringIO
+from PyPDF2 import PdfReader
+from docx import Document
+
+uploaded_file = st.file_uploader(
+    "Attach a supporting file (optional)", 
+    type=["txt", "pdf", "docx", "csv","xlsx"]
+)
+
+if uploaded_file is not None:
+    file_type = uploaded_file.name.split(".")[-1].lower()
+    content = None
+
+    if file_type == "txt":
+        # Read as text
+        stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+        content = stringio.read()
+
+    elif file_type == "pdf":
+        # Extract text from PDF
+        reader = PdfReader(uploaded_file)
+        for page in reader.pages:
+            page_text = page.extract_text()
+            if page_text:
+                content += page_text + "\n"
+        text_data=content
+
+    elif file_type == "docx":
+        doc = Document(uploaded_file)
+        # Extract paragraphs
+        for para in doc.paragraphs:
+            content += para.text + "\n"
+        # Extract tables
+        for table in doc.tables:
+            for row in table.rows:
+                row_text = " | ".join(cell.text for cell in row.cells)
+                content += row_text + "\n"
+        text_data=content
+
+    elif file_type == "csv":
+        # Read CSV into DataFrame
+        df = pd.read_csv(uploaded_file)
+        st.dataframe(df)
+        text_data = df.to_string()
+
+    elif file_type == "xlsx":
+        # Read Excel into DataFrame
         df = pd.read_excel(uploaded_file)
         # Convert to string (you can filter/clean before sending)
         text_data = df.to_string()
+
+    if content:
+        st.subheader("Extracted Content:")
+        st.text(content[:2000])  # Show first 2000 chars (avoid overload)
+
+
+
+
+        
+        
     else:
         text_data=""
     # Process user input
