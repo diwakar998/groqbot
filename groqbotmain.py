@@ -125,7 +125,7 @@ with st.sidebar:
             else:
                 st.info("No file uploaded (that’s okay!)")
                 
-text_data=""    
+#text_data=""    
 if uploaded_file is not None:
     file_type = uploaded_file.name.split(".")[-1].lower()
     content = ""
@@ -136,6 +136,7 @@ if uploaded_file is not None:
         stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
         content = stringio.read()
         text_data=content
+        st.write(text_data)
     elif file_type == "pdf":
         # Extract text from PDF
         reader = PdfReader(uploaded_file)
