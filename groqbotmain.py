@@ -125,19 +125,7 @@ with st.sidebar:
             else:
                 st.info("No file uploaded (that’s okay!)")
                 
-    if uploaded_file is not None:
-
-import streamlit as st
-import pandas as pd
-from io import StringIO
-from PyPDF2 import PdfReader
-from docx import Document
-
-uploaded_file = st.file_uploader(
-    "Attach a supporting file (optional)", 
-    type=["txt", "pdf", "docx", "csv","xlsx"]
-)
-
+    
 if uploaded_file is not None:
     file_type = uploaded_file.name.split(".")[-1].lower()
     content = None
@@ -179,18 +167,12 @@ if uploaded_file is not None:
         df = pd.read_excel(uploaded_file)
         # Convert to string (you can filter/clean before sending)
         text_data = df.to_string()
-
-    if content:
-        st.subheader("Extracted Content:")
-        st.text(content[:2000])  # Show first 2000 chars (avoid overload)
-
-
-
-
-        
-        
+    #if content:
+    #    st.subheader("Extracted Content:")
+    #    st.text(content[:2000])  # Show first 2000 chars (avoid overload)
     else:
         text_data=""
+        
     # Process user input
     if user_input:
         # Add user's message to history and show
