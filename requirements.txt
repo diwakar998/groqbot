@@ -8,3 +8,5 @@ langchain_community
 langserve
 langchain
 langchain-groq
+PyPDF2
+python-docx
