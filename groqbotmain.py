@@ -129,6 +129,7 @@ text_data=""
 if uploaded_file is not None:
     file_type = uploaded_file.name.split(".")[-1].lower()
     content = None
+    contentTbl=None
     #st.write(file_type)
     if file_type == "txt":
         # Read as text
@@ -158,8 +159,9 @@ if uploaded_file is not None:
                 row_text = " | ".join(cell.text for cell in row.cells)
                 if row_text is None:
                     row_text=""
-                    content += row_text + "\n"
-        text_data=content
+                    contentTbl += row_text + "\n"
+        text_data=content + contentTbl
+        st.write(text_data)
 
     elif file_type == "csv":
         # Read CSV into DataFrame
