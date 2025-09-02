@@ -3,6 +3,9 @@ from groq import Groq
 import streamlit as st
 import pandas as pd
 import openpyxl
+from io import StringIO
+from PyPDF2 import PdfReader
+from docx import Document
 
 from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
