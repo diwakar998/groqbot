@@ -15,30 +15,24 @@ os.environ["LANGSMITH_PROJECT"]="test"
 from langchain_groq import ChatGroq
 
 # Add custom CSS to hide the GitHub icon
-st.markdown(
-    """
+# Universal CSS to hide Streamlit clutter
+hide_streamlit_style = """
     <style>
-    .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob,
-    .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137,
-    .viewerBadge_text__1JaDK {
-        display: none;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+        /* Hide the GitHub repo icon (top right) */
+        .stAppDeployButton {visibility: hidden;}
 
-st.markdown(
-    """
-    <style>
-    /* Target the small helper text under text_input */
-    .stTextInput > div > div > div > div:nth-child(2) {
-        display: none;
-    }
+        /* Hide the hamburger menu */
+        #MainMenu {visibility: hidden;}
+
+        /* Hide Streamlit footer */
+        footer {visibility: hidden;}
+
+        /* Hide "Made with Streamlit" in toolbar */
+        .viewerBadge_link__qRIco {visibility: hidden;}
     </style>
-    """,
-    unsafe_allow_html=True
-)
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 
 # Initialize chat history with a health-focused system prompt
 if "messages" not in st.session_state:
