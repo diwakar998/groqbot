@@ -14,12 +14,12 @@ os.environ["LANGSMITH_API_KEY"]=st.secrets["LangSmith_API"]
 os.environ["LANGSMITH_PROJECT"]="test"
 from langchain_groq import ChatGroq
 
+st.markdown(hide_github_icon, unsafe_allow_html=True)
+# Add custom CSS to hide the GitHub icon
 hide_github_icon = """
-<style>
 #GithubIcon {
-    visibility: hidden;
-    }
-</style>
+  visibility: hidden;
+}
 """
 st.markdown(hide_github_icon, unsafe_allow_html=True)
 
