@@ -10,3 +10,4 @@ langchain
 langchain-groq
 PyPDF2
 python-docx
+PdfReader
