@@ -128,8 +128,8 @@ with st.sidebar:
 text_data=""    
 if uploaded_file is not None:
     file_type = uploaded_file.name.split(".")[-1].lower()
-    content = None
-    contentTbl=None
+    content = ""
+    contentTbl=""
     #st.write(file_type)
     if file_type == "txt":
         # Read as text
