@@ -129,7 +129,7 @@ with st.sidebar:
 if uploaded_file is not None:
     file_type = uploaded_file.name.split(".")[-1].lower()
     content = None
-
+    st.write(file_type)
     if file_type == "txt":
         # Read as text
         stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
