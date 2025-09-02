@@ -149,7 +149,8 @@ if uploaded_file is not None:
         # Extract paragraphs
         for para in doc.paragraphs:
             if para.text:
-                content += para.text + "\n"
+                #content += para.text + "\n"
+                content += (para.text or "") + "\n"
         # Extract tables
         for table in doc.tables:
             for row in table.rows:
