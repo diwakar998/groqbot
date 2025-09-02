@@ -161,6 +161,7 @@ if uploaded_file is not None:
                     row_text=""
                     contentTbl += row_text + "\n"
         text_data=content + contentTbl
+        st.write("the text file data is :)
         st.write(text_data)
 
     elif file_type == "csv":
