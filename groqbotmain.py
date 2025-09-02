@@ -162,7 +162,7 @@ if uploaded_file is not None:
                 if row_text is None:
                     row_text=""
                     contentTbl += row_text + "\n"
-                else
+                else:
                     contentTbl += row_text + "\n"
         text_data=content + contentTbl
         st.write("the text file data is :")
