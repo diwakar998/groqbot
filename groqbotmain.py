@@ -16,12 +16,9 @@ from langchain_groq import ChatGroq
 
 # Add custom CSS to hide the GitHub icon
 # Universal CSS to hide Streamlit clutter
-import streamlit as st
-
-# CSS to nuke GitHub icon, menu and footer
 hide_everything = """
     <style>
-        /* Hide GitHub repo button (top-right corner) */
+        /* Hide GitHub / Deploy button (top-right corner) */
         [data-testid="stToolbar"] {visibility: hidden !important;}
 
         /* Hide hamburger menu */
@@ -30,8 +27,11 @@ hide_everything = """
         /* Hide footer */
         footer {visibility: hidden;}
 
-        /* Hide viewer badge (sometimes shows up on bottom right) */
+        /* Hide viewer badge (sometimes bottom-right) */
         .viewerBadge_container__1QSob {display: none !important;}
+
+        /* Hide "Manage app" button (bottom-right) */
+        [data-testid="stStatusWidget"] {display: none !important;}
     </style>
 """
 st.markdown(hide_everything, unsafe_allow_html=True)
