@@ -42,6 +42,23 @@ hide_everything = """
         section[data-testid="stSidebar"] {
             background-color: #0000FF;
         }
+          /* Main app background */
+        .stApp {
+            background-color: #F9FAFB;
+        }
+
+        /* Sidebar */
+        section[data-testid="stSidebar"] {
+            background-color: #E6F0F8;
+            border-right: 1px solid #D6E0EA;
+        }
+
+        /* Cards or chat bubbles */
+        .stChatMessage {
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+
     </style>
 """
 st.markdown(hide_everything, unsafe_allow_html=True)
