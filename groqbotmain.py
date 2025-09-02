@@ -129,7 +129,7 @@ text_data=""
 if uploaded_file is not None:
     file_type = uploaded_file.name.split(".")[-1].lower()
     content = None
-    st.write(file_type)
+    #st.write(file_type)
     if file_type == "txt":
         # Read as text
         stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
@@ -173,7 +173,7 @@ if uploaded_file is not None:
     else:
         text_data=""
     #Print text file uploaded data
-    st.write(text_data)
+    #st.write(text_data)
     
     # Process user input
     if user_input:
