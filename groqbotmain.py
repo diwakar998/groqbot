@@ -16,23 +16,25 @@ from langchain_groq import ChatGroq
 
 # Add custom CSS to hide the GitHub icon
 # Universal CSS to hide Streamlit clutter
-hide_streamlit_style = """
-    <style>
-        /* Hide the GitHub repo icon (top right) */
-        .stAppDeployButton {visibility: hidden;}
+import streamlit as st
 
-        /* Hide the hamburger menu */
+# CSS to nuke GitHub icon, menu and footer
+hide_everything = """
+    <style>
+        /* Hide GitHub repo button (top-right corner) */
+        [data-testid="stToolbar"] {visibility: hidden !important;}
+
+        /* Hide hamburger menu */
         #MainMenu {visibility: hidden;}
 
-        /* Hide Streamlit footer */
+        /* Hide footer */
         footer {visibility: hidden;}
 
-        /* Hide "Made with Streamlit" in toolbar */
-        .viewerBadge_link__qRIco {visibility: hidden;}
+        /* Hide viewer badge (sometimes shows up on bottom right) */
+        .viewerBadge_container__1QSob {display: none !important;}
     </style>
 """
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-
+st.markdown(hide_everything, unsafe_allow_html=True)
 
 # Initialize chat history with a health-focused system prompt
 if "messages" not in st.session_state:
