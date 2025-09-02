@@ -144,7 +144,7 @@ if uploaded_file is not None:
             if page_text:
                 content += page_text + "\n"
         text_data=content
-        st.write(text_data)
+        #st.write(text_data)
     elif file_type == "docx":
         doc = Document(uploaded_file)
         # Extract paragraphs
@@ -165,11 +165,11 @@ if uploaded_file is not None:
                 else:
                     contentTbl += row_text + "\n"
         text_data=content + contentTbl
-        st.write("the text file data is :")
-        st.write(content)
-        st.write("the text file data is :")
-        st.write(contentTbl)
-        st.write(text_data)
+        #st.write("the text file data is :")
+        #st.write(content)
+        #st.write("the text file data is :")
+        #st.write(contentTbl)
+        #st.write(text_data)
 
     elif file_type == "csv":
         # Read CSV into DataFrame
