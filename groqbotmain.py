@@ -36,11 +36,11 @@ hide_everything = """
         [data-testid="stActionButton"] {display: none !important;}
         /* Main background */
         .stApp {
-            background-color: #1E1E1E;
+            background-color: #ffffff;
         }
         /* Sidebar background */
         section[data-testid="stSidebar"] {
-            background-color: #2B2B2B;
+            background-color: #0000FF;
         }
     </style>
 """
