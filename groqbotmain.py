@@ -86,8 +86,8 @@ prompt = ChatPromptTemplate.from_messages([
 llm = ChatGroq(
     groq_api_key=st.secrets["GROQ_API_KEY"],
     model="llama-3.3-70b-versatile",   # or "llama3-70b-8192", etc.
-    temperature=0.1,  # default is 0.7, change to e.g., 0.5 for more focused output
-    top_p=0.9          
+    temperature=0.1  # default is 0.7, change to e.g., 0.5 for more focused output
+    #top_p=0.9          
 )
 
 #client = Groq(api_key=st.secrets["GROQ_API_KEY"],)
@@ -112,8 +112,7 @@ with st.sidebar:
         submitted = st.form_submit_button("Submit")
     
     #user_input=st.text_input("Hi, How can I help you today ?")
-    
-    # Submit button to control execution
+    #Submit button to control execution
     if submitted:
         if not user_input:  # Text is mandatory
             st.error("⚠️ Please enter text before submitting.")
@@ -136,7 +135,7 @@ if uploaded_file is not None:
         stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
         content = stringio.read()
         text_data=content
-        st.write(text_data)
+        #st.write(text_data)
     elif file_type == "pdf":
         # Extract text from PDF
         reader = PdfReader(uploaded_file)
@@ -145,13 +144,15 @@ if uploaded_file is not None:
             if page_text:
                 content += page_text + "\n"
         text_data=content
-
+        st.write(text_data)
     elif file_type == "docx":
         doc = Document(uploaded_file)
         # Extract paragraphs
         for para in doc.paragraphs:
             if para.text is None:
                 para.text = ""
+                content += para.text + "\n"
+            else:
                 content += para.text + "\n"
                 #content += (para.text or "") + "\n"
         # Extract tables
@@ -160,6 +161,8 @@ if uploaded_file is not None:
                 row_text = " | ".join(cell.text for cell in row.cells)
                 if row_text is None:
                     row_text=""
+                    contentTbl += row_text + "\n"
+                else
                     contentTbl += row_text + "\n"
         text_data=content + contentTbl
         st.write("the text file data is :")
