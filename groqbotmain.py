@@ -34,6 +34,14 @@ hide_everything = """
 
         /* Hide Manage app (bottom-right) */
         [data-testid="stActionButton"] {display: none !important;}
+        /* Main background */
+        .stApp {
+            background-color: #1E1E1E;
+        }
+        /* Sidebar background */
+        section[data-testid="stSidebar"] {
+            background-color: #2B2B2B;
+        }
     </style>
 """
 st.markdown(hide_everything, unsafe_allow_html=True)
