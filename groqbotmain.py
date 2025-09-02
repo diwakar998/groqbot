@@ -156,7 +156,8 @@ if uploaded_file is not None:
         for table in doc.tables:
             for row in table.rows:
                 row_text = " | ".join(cell.text for cell in row.cells)
-                if row_text:
+                if row_text is None:
+                    row_text=""
                     content += row_text + "\n"
         text_data=content
 
