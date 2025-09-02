@@ -172,7 +172,9 @@ if uploaded_file is not None:
     #    st.text(content[:2000])  # Show first 2000 chars (avoid overload)
     else:
         text_data=""
-        
+    #Print text file uploaded data
+    st.write(text_data)
+    
     # Process user input
     if user_input:
         # Add user's message to history and show
